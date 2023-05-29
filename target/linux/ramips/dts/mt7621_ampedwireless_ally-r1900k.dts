@@ -1,0 +1,39 @@
+// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+
+#include "mt7621_ampedwireless_ally.dtsi"
+
+/ {
+	compatible = "ampedwireless,ally-r1900k", "mediatek,mt7621-soc";
+	model = "Amped Wireless ALLY-R1900K";
+};
+
+&gmac1 {
+	status = "okay";
+	label = "lan3";
+	phy-handle = <&ethphy4>;
+};
+
+&mdio {
+	ethphy4: ethernet-phy@4 {
+		reg = <4>;
+	};
+};
+
+&switch0 {
+	ports {
+		port@1 {
+			status = "okay";
+			label = "wan";
+		};
+
+		port@2 {
+			status = "okay";
+			label = "lan1";
+		};
+
+		port@3 {
+			status = "okay";
+			label = "lan2";
+		};
+	};
+};

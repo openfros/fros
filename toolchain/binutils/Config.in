@@ -1,0 +1,31 @@
+# Choose binutils version.
+
+choice
+	prompt "Binutils Version" if TOOLCHAINOPTS
+	default BINUTILS_USE_VERSION_2_40
+	help
+	  Select the version of binutils you wish to use.
+
+	config BINUTILS_USE_VERSION_2_37
+		bool "Binutils 2.37"
+		select BINUTILS_VERSION_2_37
+
+	config BINUTILS_USE_VERSION_2_38
+		bool "Binutils 2.38"
+		select BINUTILS_VERSION_2_38
+
+	config BINUTILS_USE_VERSION_2_39
+		bool "Binutils 2.39"
+		select BINUTILS_VERSION_2_39
+
+	config BINUTILS_USE_VERSION_2_40
+		bool "Binutils 2.40"
+		select BINUTILS_VERSION_2_40
+endchoice
+
+config EXTRA_BINUTILS_CONFIG_OPTIONS
+	string
+	prompt "Additional binutils configure options" if TOOLCHAINOPTS
+	default ""
+	help
+	    Any additional binutils options you may want to include....

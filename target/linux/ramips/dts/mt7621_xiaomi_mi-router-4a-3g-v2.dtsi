@@ -1,0 +1,62 @@
+// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+
+#include "mt7621_xiaomi_mi-router-4a-common.dtsi"
+
+/ {
+	aliases {
+		label-mac-device = &gmac1;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+
+		led_status_blue: status_blue {
+			label = "blue:status";
+			gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
+		};
+
+		led_status_yellow: status_yellow {
+			label = "yellow:status";
+			gpios = <&gpio 10 GPIO_ACTIVE_LOW>;
+		};
+	};
+};
+
+&wifi0 {
+	mediatek,mtd-eeprom = <&factory 0x8000>;
+	ieee80211-freq-limit = <5000000 6000000>;
+};
+
+&wifi1 {
+	mediatek,mtd-eeprom = <&factory 0x0000>;
+	ieee80211-freq-limit = <2400000 2500000>;
+};
+
+&gmac1 {
+	status = "okay";
+	label = "wan";
+	phy-handle = <&ethphy4>;
+
+	nvmem-cells = <&macaddr_factory_e006>;
+	nvmem-cell-names = "mac-address";
+};
+
+&mdio {
+	ethphy4: ethernet-phy@4 {
+		reg = <4>;
+	};
+};
+
+&switch0 {
+	ports {
+		port@2 {
+			status = "okay";
+			label = "lan2";
+		};
+
+		port@3 {
+			status = "okay";
+			label = "lan1";
+		};
+	};
+};
