@@ -1,0 +1,11 @@
+scripts
+feeds
+tmp
+staging_dir
+build_dir
+bin
+dl
+.config
+.config.old
+key-build*
+
