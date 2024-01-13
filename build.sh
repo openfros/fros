@@ -21,6 +21,8 @@ DEPENDS_PACKAGES="
 "
 init_depend_package_config()
 {
+	sed -i "/CONFIG_PACKAGE_firewall4/d" .config
+        echo 'CONFIG_PACKAGE_firewall4=n' >>.config
 	for package in $DEPENDS_PACKAGES;do
 		echo "add depend package CONFIG_PACKAGE_$package"
 		sed -i "/CONFIG_$package/d" .config
